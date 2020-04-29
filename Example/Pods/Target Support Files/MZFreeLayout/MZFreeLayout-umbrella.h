@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "MZFreeLayout.h"
 
 FOUNDATION_EXPORT double MZFreeLayoutVersionNumber;
 FOUNDATION_EXPORT const unsigned char MZFreeLayoutVersionString[];
