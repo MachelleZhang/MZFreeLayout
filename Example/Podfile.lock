@@ -1,0 +1,16 @@
+PODS:
+  - MZFreeLayout (0.1.0)
+
+DEPENDENCIES:
+  - MZFreeLayout (from `../`)
+
+EXTERNAL SOURCES:
+  MZFreeLayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MZFreeLayout: 413e5c37ae9cd3b3582a86f428174fb9776aab14
+
+PODFILE CHECKSUM: fc98f212f3c0d3013da11b39916c8cc9b30c6ce7
+
+COCOAPODS: 1.9.0
