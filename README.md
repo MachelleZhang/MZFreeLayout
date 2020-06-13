@@ -1,30 +1,23 @@
 # MZFreeLayout
 
-## Abstract
+## 简介
 MZFreeLayout的[Swift版本](https://github.com/MachelleZhang/MZTableLayout)<br>
+
 自定义UICollectionView的Layout，实现类似Excel的功能。<br>
-![Multi_Headers.gif](/Pictures/multi_header.gif)
+![Multi_Headers.gif](Pictures/multi_header.gif)
 
-## Example
+## 安装方法
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
-iOS 8.0+
-
-## Installation
-
-MZMultiHeadersSheet is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+在podfile中加入如下语句
 
 ```ruby
-pod 'MZFreeLayout', '~> 0.1.0'
+pod 'MZFreeLayout', '~> 1.0.0'
 ```
 
-## Usage<br>
+## 用法
+
 e.g.<br>
-![free_layout.png](/Pictures/free_layout.png)<br>
+![free_layout.png](Pictures/free_layout.png)<br>
 在已知表格样式的前提下，按从左到右，从上到下，依次添加索引，已编号的掠过，参考上图的索引规则<br>
 
 1.引入头文件
@@ -43,53 +36,43 @@ freeLayout.delegate = self;
 3.需要实现的主要代理方法
 
 ```Objective-C
-#pragma mark - MZFreeLayoutDelegate
-/**
- *  表格的基本宽度，1个单位长度实际的像素值，格式(float, float)，例：(50, 50)
- */
-- (CGSize)baseSizeOfCollectionView:(UICollectionView *)collectionView {
-    return CGSizeMake(100, 200);
+#pragma mark - MZFreeSheetLayoutDelegate
+- (CGFloat)baseWidthOfCollectionView:(UICollectionView *)collectionView cellWidthOf:(NSInteger)index {
+    return 40;
 }
 
-/**
- *  表格的规模大小，格式(int, int)，例：(4, 5)，表示表格总体宽4个单位，高5个单位
- */
-- (CGSize)scaleOfCollectionView:(UICollectionView *)collectionView {
-    return CGSizeMake(5, 5);
+- (CGFloat)baseHeightOfCollectionView:(UICollectionView *)collectionView cellHeightOf:(NSInteger)index {
+    return 50;
 }
 
-/**
- *  每个cell的大小，用单位个数表示，格式(int, int)，例：(2, 1)，表示当前索引的元素宽2个单位，高1个单位
- */
-- (CGSize)mzCollectionView:(UICollectionView *)collectionView cellSizeOfIndex:(NSInteger)index {
-    NSArray *cellSize = self.datas[index];
-    NSInteger width = ((NSNumber *)cellSize[0]).integerValue;
-    NSInteger height = ((NSNumber *)cellSize[1]).integerValue;
-    return CGSizeMake(width, height);
+- (MZFreeModel *)scaleOfCollectionView:(UICollectionView *)collectionView {
+    return [MZFreeModel initWithX:20 Y:20];
 }
 
-/**
- *  需要冻结的行列，格式(int, int)，例：(1,0)，表示第1列被冻结，可参照Excel的冻结规则
- */
-- (CGSize)frozenUnitOfCollection:(UICollectionView *)collectionView {
-    return CGSizeMake(1, 0);
+- (MZFreeModel *)mzCollectionView:(UICollectionView *)collectionView cellSizeOfIndex:(NSInteger)index {
+    return [MZFreeModel initWithX:1 Y:1];
+}
+
+- (MZFreeModel *)frozenUnitOfCollection:(UICollectionView *)collectionView {
+    return [MZFreeModel initWithX:0 Y:1];
 }
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.datas.count;
+    return 400;
 }
 ```
 
-## Update History
+## 版本更新历史
 版本号|版本描述
 ---|---
 0.1.0|从MZMultiHeadersSheet库分离出来
+1.0.0|更换单元格宽度和高度的代理
 
-## Author
+## 作者
 
-MachelleZhang, 407916482@qq.com
+ZhangLe, 407916482@qq.com
 
-## License
+## 开源证书
 
 MZFreeLayout is available under the MIT license. See the LICENSE file for more info.

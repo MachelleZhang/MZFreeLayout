@@ -1,6 +1,0 @@
-framework module MZFreeLayout {
-  umbrella header "MZFreeLayout-umbrella.h"
-
-  export *
-  module * { export * }
-}

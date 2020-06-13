@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MZFreeLayout'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A short description of MZFreeLayout.'
 
   s.description      = <<-DESC
@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'MZFreeLayout/Classes/**/*'
+  s.source_files = "#{s.name.to_s}/*.{h, m}"
+  s.frameworks = 'UIKit', 'MapKit'
   
 end
